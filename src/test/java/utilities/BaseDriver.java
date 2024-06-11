@@ -27,9 +27,10 @@ public class BaseDriver {
 			desiredCapabilities.setCapability("deviceName", "local");
 			desiredCapabilities.setCapability("appPackage", "com.google.android.calculator");
 			desiredCapabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
-		  //  desiredCapabilities.setCapability("app", fs.getAbsolutePath());
+		 //   desiredCapabilities.setCapability("app", fs.getAbsolutePath());
 			URL remoteUrl = new URL("http://127.0.0.1:4723/wd/hub");
-			
+			driver = new AndroidDriver<AndroidElement>(remoteUrl, desiredCapabilities);
+			Thread.sleep(500);
 			
 				
 		}

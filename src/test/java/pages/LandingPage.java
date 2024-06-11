@@ -1,8 +1,13 @@
 package pages;
 
+import static org.testng.Assert.assertEquals;
+
 import org.openqa.selenium.By;
 
-public class LandingPage {
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+
+public class LandingPage extends BasePage{
 	
 	
 	public String MENU_CHOOSE_THEME_POP_UP_TITTLE_TEXT = "Choose theme";
@@ -77,5 +82,20 @@ public class LandingPage {
 	public By MENU_HISTORY_MORE_OPTION_CLEAR_BUTTON = By.id("com.google.android.calculator:id/title");
 	public By MENU_HISTORY_TODAY_TEXT_LOCATOR = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.support.v7.widget.RecyclerView/android.widget.LinearLayout[1]/android.widget.TextView[1]");
 		
-
+	
+	
+	
+	
+	public void numberVerifier(By numberLocator, int numberValue ,AndroidDriver<AndroidElement> driver  ) throws InterruptedException {
+		 Thread.sleep(500);
+		 findElement(numberLocator, driver).click();
+		 waitForVisibilityOfElement(driver, DISPLAY_NUMBER_LOCATOR, 2);
+		 //assert.assertEquals(true, "Button not clicked or Button not working.");
+		 
+		 
+		
+	}
+	
+	
+	
 }
