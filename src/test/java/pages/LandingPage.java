@@ -4,6 +4,7 @@ import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.By;
 
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
@@ -86,15 +87,22 @@ public class LandingPage extends BasePage{
 	
 	
 	
-	public void numberVerifier(By numberLocator, int numberValue ,AndroidDriver<AndroidElement> driver  ) throws InterruptedException {
-		 Thread.sleep(500);
-		 findElement(numberLocator, driver).click();
-		 waitForVisibilityOfElement(driver, DISPLAY_NUMBER_LOCATOR, 2);
-		 //assert.assertEquals(true, "Button not clicked or Button not working.");
-		 
-		 
-		
+	public void numberVerifier(By numberLocator, String digit, AndroidDriver<AndroidElement> driver)throws InterruptedException {
+		Thread.sleep(500);
+
+		MobileElement digitElement = findElement(numberLocator, driver);
+		digitElement.click();
+		MobileElement displayElement = findElement(DISPLAY_NUMBER_LOCATOR, driver) ;
+		String displayedText = displayElement.getText();
+
+		if (displayedText.contains(digit)) {
+			System.out.println("Test Passed: The digit " + digit + " is displayed correctly.");
+		} else {
+			System.out.println("Test Failed: The digit " + digit + " is not displayed correctly.");
+		}
 	}
+		
+	
 	
 	
 	
